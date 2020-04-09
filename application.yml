@@ -1,0 +1,18 @@
+server:
+  port: 81
+spring: 
+  profiles: test #生产环境
+ 
+---
+
+server:
+  port: 80 
+spring: 
+  profiles: prod #生产环境
+  
+---
+
+#配置使用开发环境还是生产环境
+spring:
+   profiles: 
+      active: prod
