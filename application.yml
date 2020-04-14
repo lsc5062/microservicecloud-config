@@ -1,18 +1,23 @@
 server:
   port: 81
-spring: 
-  profiles: test #生产环境fasdf
- 
+spring:
+  profiles: test #测试环境
+  application:
+    name: microservicecloud-config-lisc-test
+
+
 ---
 
 server:
-  port: 80 
-spring: 
-  profiles: prod #生产环境
-  
+  port: 80
+spring:
+  profiles: dev #开发环境
+  application:
+    name: microservicecloud-config-lisc-dev
+
 ---
 
 #配置使用开发环境还是生产环境
 spring:
-   profiles: 
-      active: prod
+  profiles:
+    active: prod
