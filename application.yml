@@ -20,4 +20,4 @@ spring:
 #配置使用开发环境还是生产环境
 spring:
   profiles:
-    active: prod
+    active: dev
