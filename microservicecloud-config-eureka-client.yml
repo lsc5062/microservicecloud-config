@@ -1,27 +1,4 @@
 
-
-server:
-  port: 7001
-eureka:
-  server:
-  #    enable-self-preservation: false //关闭自我保护
-  instance:
-    hostname: eureka7001.com  #此为集群后的eureka名称  #127.0.0.1(单机)  #eureka服务端的实例名称
-  client:
-    register-with-eureka: false  #禁止自己当做服务注册
-    fetch-registry: false  #屏蔽注册信息
-    service-url:
-      #      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/ #集群模式(分别配置其他几台eureka服务器)
-      defaultZone: http://eureka7002.com:7002/eureka/ #集群模式(考虑本机性能只做两台)
-      # 单机模式
-#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
-
-spring:
-  profiles:
-    active: dev
-
----
 server:
   port: 7001
 
@@ -30,16 +7,9 @@ spring:
   application:
     name: microservicecloud-config-eureka-client
 
-eureka:
-  instance:
-    hostname: eureka7001.com
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/
-
 ---
+
+
 
 server:
   port: 7001
@@ -49,6 +19,14 @@ spring:
   application:
     name: microservicecloud-config-eureka-client
 
+---
+
+spring:
+  profiles:
+    active: dev
+
+
+
 eureka:
   instance:
     hostname: eureka7001.com
@@ -57,3 +35,4 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
+

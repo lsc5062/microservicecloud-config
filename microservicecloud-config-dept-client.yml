@@ -13,6 +13,12 @@ spring:
 
 ---
 
+spring:
+  application:
+    name: microservicecloud-config-dept-client
+  profiles:
+    active: dev
+
 mybatis:
   #  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
   type-aliases-package: com.lisc.springcloud.entity         # 所有Entity别名类所在包
@@ -21,11 +27,6 @@ mybatis:
 
 
 #   以下采用     hikari 方式
-spring:
-  application:
-    name: microservicecloud-config-dept-client
-  profiles:
-    active: dev
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource                # 当前数据源操作类型
