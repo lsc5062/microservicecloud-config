@@ -1,16 +1,17 @@
+
+
+server:
+  port: 8000
+spring:
+  profiles: tes #生产环境
+
+---
 server:
   port: 8001
 spring:
   profiles: dev #生产环境
 
 ---
-server:
-  port: 8001
-spring:
-  profiles: test #测试环境
-
----
-
 
 mybatis:
   #  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
@@ -18,8 +19,7 @@ mybatis:
   mapper-locations:
     - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
 
-
-#   以下采用     hikari 方式
+   #以下采用     hikari 方式
 spring:
   application:
     name: microservicecloud-config-dept-client
@@ -27,22 +27,22 @@ spring:
     active: dev
 
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource                # 当前数据源操作类型
-    driver-class-name: com.mysql.jdbc.Driver                # mysql驱动包
-    #url: jdbc:mysql://127.0.0.1:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
+    type: com.alibaba.druid.pool.DruidDataSource               # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver              # mysql驱动包
+    #    driver-class-name: corg.mariadb.jdbc.Driver                # mairadb驱动包
+    url: jdbc:mysql://localhost:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
+    #    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
     username: root
     password: mysql
-    hikari:
-      maxLifetime: 1765000 #一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒以上
-      maximumPoolSize:  15  #连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_coun:
-      connection-test-query:  SELECT 1
-      connection-timeout: 30000
-      idle-timeout: 6000
-      max-lifetime: 600000
-      maximum-pool-size: 100
-      minimum-idle: 100
-    url: jdbc:mysql://127.0.0.1:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
-
+    druid:
+      # 初始化大小，最小，最大
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位毫秒
+      time-between-eviction-runs-millis: 60000
 
 #熔断器DashBoard：actuator在springboot2.0调整后开关 web端点的配置，”**“代表开启所有
 # hystrix 2.0以后 stream 呈现有两种方式，一、创建class 设置 /hystrix.stream ,二、设置yml配置熔断器
@@ -67,4 +67,3 @@ info:
   company.name: www.lisc.com
   build.artifactId: @project.artifactId@
   build.version: @project.version@
-
