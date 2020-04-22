@@ -29,7 +29,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource                # 当前数据源操作类型
     driver-class-name: com.mysql.jdbc.Driver                # mysql驱动包
-    url: jdbc:mysql://127.0.0.1:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
+    #url: jdbc:mysql://127.0.0.1:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
     username: root
     password: mysql
     hikari:
@@ -41,6 +41,7 @@ spring:
       max-lifetime: 600000
       maximum-pool-size: 100
       minimum-idle: 100
+    url: jdbc:mysql://127.0.0.1:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
 
 
 #熔断器DashBoard：actuator在springboot2.0调整后开关 web端点的配置，”**“代表开启所有
