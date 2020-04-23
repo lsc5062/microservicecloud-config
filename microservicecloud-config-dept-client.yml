@@ -29,8 +29,8 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource               # 当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver              # mysql驱动包
-    url:jdbc:mysql://localhost:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
-    username: root
+#    url:jdbc:mysql://localhost:3307/springcloud?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&autoReconnectForPools=true            # 数据库名称
+#    username: root
     password: mysql
     druid:
       # 初始化大小，最小，最大
